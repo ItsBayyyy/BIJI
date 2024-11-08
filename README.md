@@ -31,11 +31,13 @@ Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini:
 Clone repositori ini ke terminal kamu dengan perintah:
 ```bash
 git clone https://github.com/username/nama-proyek.git
+```
 
 ### 2. FILE ENV
 buat file .env atau copy file .env.example
 ```bash
 cp .env.example .env
+```
 
 ### 3. Nama Database
 ganti nama dabase menjadi **BIJI**
@@ -47,8 +49,10 @@ import database, kamu bisa ambil di folder BIJI - Database
 jalankan perintah ini di terminal kamu
 ```bash
 php artisan key:generate
+```
 
 ### 6. SERVER
 jalankan perintah ini untuk melihat tampilan web
 ```bash
 php artisan serve
+```
