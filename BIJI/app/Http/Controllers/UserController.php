@@ -85,5 +85,26 @@ class UserController extends Controller
         return view('book.part.riwayat', compact('loanHistory'));
     }
     
+    public function store(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'book_id' => 'required|exists:books,id',
+            'user_id' => 'required|exists:users,id'
+        ]);
+
+        try {
+            // Save the loan history to the database
+            LoanHistory::create([
+                'book_id' => $request->book_id,
+                'user_id' => $request->user_id,
+                'loan_date' => now()
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Buku berhasil dipinjam.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Gagal meminjam buku.']);
+        }
+    }
     
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../assets/images/icon.png" type="image/x-icon" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!--=============== REMIXICONS ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" />
@@ -53,8 +55,9 @@
                                 @endif
                             </div>
                             <div class="btn">
-                                <a href="#" class="button" id="pinjamBukuBtn">Pinjam Buku</a>
-                            </div>  
+                                <a href="#" class="button" id="pinjamBukuBtn" data-book-id="{{$book->id}}">Pinjam
+                                    Buku</a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -197,31 +200,64 @@
     <!--=============== MAIN JS ===============-->
     <script src="../assets/js/script.js"></script>
     <!-- SweetAlert2 CDN -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    const pinjamBukuBtn = document.getElementById('pinjamBukuBtn');
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#pinjamBukuBtn').on('click', function (e) {
+            e.preventDefault();
 
-    pinjamBukuBtn.addEventListener('click', function(e) {
-        e.preventDefault(); 
+            const bookId = $(this).data('book-id'); 
 
-        Swal.fire({
-            title: 'Apakah Anda yakin?',
-            text: 'Apakah Anda ingin meminjam buku ini?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Ya, pinjam!',
-            cancelButtonText: 'Tidak, batalkan'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Sukses!',
-                    'Anda telah berhasil melakukan permintaan untuk meminjam buku.',
-                    'success'
-                );
-            }
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: 'Apakah Anda ingin meminjam buku ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, pinjam!',
+                cancelButtonText: 'Tidak, batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const loanData = {
+                        book_id: bookId,
+                        user_id: {{Session::get('paramId')}}
+                };
+
+                    $.ajax({
+                        url: '/loan-history',
+                        type: 'POST',
+                        data: JSON.stringify(loanData),
+                        contentType: 'application/json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (data) {
+                            if (data.success) {
+                                Swal.fire(
+                                    'Sukses!',
+                                    'Anda telah berhasil melakukan permintaan untuk meminjam buku.',
+                                    'success'
+                                );
+                            } else {
+                                Swal.fire(
+                                    'Error!',
+                                    data.message || 'Gagal meminjam buku. Silakan coba lagi nanti.',
+                                    'error'
+                                );
+                            }
+                        },
+                        error: function (error) {
+                            Swal.fire(
+                                'Error!',
+                                'Terjadi kesalahan saat memproses permintaan.',
+                                'error'
+                            );
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 

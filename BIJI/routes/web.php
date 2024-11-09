@@ -47,6 +47,7 @@ Route::post('/update-email', [AuthController::class, 'updateEmail']);
 Route::get('/user/username', [AuthController::class, 'showUsername']);
 Route::get('/user/email', [AuthController::class, 'showEmail']);
 Route::get('/user/password', [AuthController::class, 'showPassword']);
+Route::post('/loan-history', [UserController::class, 'store']);
 
 //admin
 Route::get('/admin/book', [BookController::class, 'showAdminBook']);
