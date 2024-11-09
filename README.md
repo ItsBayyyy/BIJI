@@ -1,6 +1,6 @@
-# Nama Proyek Laravel
+# BIJI
 
-Deskripsi singkat tentang proyek ini dan tujuannya.
+Website Perpustakaan
 
 ## Fitur-Fitur
 Berikut adalah fitur-fitur yang ada pada proyek ini:
