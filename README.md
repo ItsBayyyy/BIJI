@@ -143,8 +143,8 @@ php artisan key:generate
 jalankan perintah ini di terminal kamu
 ```bash
 php artisan db:seed
-
-
+```
+```
 # akun admin
 admin@admin.com
 password123
