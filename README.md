@@ -139,10 +139,19 @@ jalankan perintah ini di terminal kamu
 php artisan key:generate
 ```
 
-### 7. Akun Admin
+### 7. Seeder untuk akun dan data bot
 jalankan perintah ini di terminal kamu
 ```bash
 php artisan db:seed
+
+
+# akun admin
+admin@admin.com
+password123
+
+# akun user
+bayuardana213@gmail.com
+password123
 ```
 
 ### 8. SERVER
