@@ -78,7 +78,7 @@
             @endif
 
             @if($books->isEmpty())
-                <p class="center-text">Tidak ada buku yang ditemukan untuk pencarian ini.</p>
+                <p class="center-text">Tidak ada buku yang ditemukan.</p>
             @else
                 <div class="new-container container">
                     <div class="new-swiper">

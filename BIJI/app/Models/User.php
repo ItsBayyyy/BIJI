@@ -25,6 +25,7 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at',
         'forgot_password_token',
         'password_change_at',
+        'role_id'
     ];
 
     // Implementasikan metode yang diperlukan oleh JWTSubject

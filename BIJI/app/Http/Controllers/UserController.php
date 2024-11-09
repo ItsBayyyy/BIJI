@@ -82,7 +82,7 @@ class UserController extends Controller
         $userId = session('paramId');
         $loanHistory = LoanHistory::where('user_id', $userId)->get();
 
-        return view('book.riwayat', compact('loanHistory'));
+        return view('book.part.riwayat', compact('loanHistory'));
     }
     
     

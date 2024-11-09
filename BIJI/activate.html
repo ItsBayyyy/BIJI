@@ -1,94 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>BIJI | Auth</title>
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../public/assets/css/auth.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
-
 <body>
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form id="login" class="sign-in-form">
-                    <h2 class="title">Search Account</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username or Email" name="login_identifier" />
-                        <div id="login_identifier-error" class="error-message"></div>
-                    </div>
-                    <div class="g-recaptcha" data-sitekey="{{ env('NOCAPTCHA_SITEKEY') }}"></div>
-                    <div id="captcha-error" class="error-message"></div>
-                    <button id="login-btn" type="submit" class="btn solid">Search</button>
-                    <button id="login-load-btn" type="submit" class="btn solid" disabled style="display: none;">
-                        Memuat
-                        <div class="loader"></div>
-                    </button>
-                </form>
-            </div>
-        </div>
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <img src="../public/assets/images/search.svg" class="image" alt="" />
+    <!-- Trigger Button for Modal -->
+    <button type="button" class="btn btn-primary" onclick="showBookData()">
+        Tambah Buku
+    </button>
+
+    <!-- Bootstrap Modal for Showing Book Data -->
+    <div class="modal fade" id="showBookModal" tabindex="-1" aria-labelledby="addBookModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: #02AEE3; color: white;">
+                    <h5 class="modal-title" id="showBookModalLabel">Detail Buku</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <!-- Book Cover Image -->
+                    <div class="text-center mb-4">
+                        <img id="cover_image" src="#" alt="Cover Image" style="max-width: 200px; max-height: 300px;">
+                    </div>
+
+                    <!-- Book Details -->
+                    <div class="mb-3">
+                        <strong>Judul:</strong>
+                        <p id="title"></p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>Penulis:</strong>
+                        <p id="author"></p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>Sinopsis:</strong>
+                        <p id="synopsis"></p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>Genre 1:</strong>
+                        <p id="genre_1"></p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>Genre 2:</strong>
+                        <p id="genre_2"></p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>Jumlah Tersedia:</strong>
+                        <p id="available_copies"></p>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="../assets/js/app.js"></script>
-    <script src="https://www.recaptcha.net/recaptcha/api.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
-            $('#register').on('submit', function (e) {
-                e.preventDefault()
-                $('#register-btn').prop('disabled', true);
-                $('#register-btn').hide();
-                $('#register-load-btn').show();
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: '/register',
-                    method: 'post',
-                    data: $(this).serialize(),
-                    dataType: 'json',
-                    beforeSend: function () {
-                        $("div[id$='-error']").empty()
-                    },
-                    success: function (data) {
-                        if (data.error == true) {
-                            var hasOtherErrors = false;
-                            $.each(data.message, function (field, error) {
-                                $('#' + field + '-error').html(error);
-                            });
-                            if (grecaptcha.getResponse() == "") {
-                                $('#captcha-error').html(
-                                    'Lengkapi Captcha agar Anda dapat melanjutkan.');
-                            }
-                            if (hasOtherErrors) {
-                                grecaptcha.reset();
-                            }
-                            $('#register-btn').prop('disabled', false);
-                            $('#register-btn').show();
-                            $('#register-load-btn').hide();
-                        } else {
-                            setTimeout(function () {
-                                window.location.href = data.redirect_url;
-                            }, 1000);
-                        }
-                    },
-                    complete: function () {
-                        $('#register-load-btn').hide();
-                        $('#register-btn').show();
-                    }
-                });
-            });
-        });
+        function showBookData() {
+            // Dummy data for demonstration purposes
+            const book = {
+                cover_image: 'https://via.placeholder.com/200x300', // Replace with actual image URL
+                title: 'Contoh Judul Buku',
+                author: 'Nama Penulis',
+                synopsis: 'Ini adalah sinopsis buku yang panjang dan menarik.',
+                genre_1: 'Fiksi',
+                genre_2: 'Petualangan',
+                available_copies: 5
+            };
+            
+            // Set the modal fields with book data
+            document.getElementById('cover_image').src = book.cover_image;
+            document.getElementById('title').innerText = book.title;
+            document.getElementById('author').innerText = book.author;
+            document.getElementById('synopsis').innerText = book.synopsis;
+            document.getElementById('genre_1').innerText = book.genre_1;
+            document.getElementById('genre_2').innerText = book.genre_2 || 'N/A'; // 'N/A' if no genre 2
+            document.getElementById('available_copies').innerText = book.available_copies;
+
+            // Show the modal
+            var myModal = new bootstrap.Modal(document.getElementById('showBookModal'));
+            myModal.show();
+        }
     </script>
 </body>
-
 </html>

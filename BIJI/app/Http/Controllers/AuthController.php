@@ -96,12 +96,12 @@ class AuthController extends Controller
     {
         $messages = [
             'login_identifier.required' => 'Username atau Email harus diisi',
-                'login_identifier.exists' => 'Username atau Email tidak ditemukan',
-                'password.required' => 'Kata sandi harus diisi',
+            'login_identifier.exists' => 'Username atau Email tidak ditemukan',
+            'password.required' => 'Kata sandi harus diisi',
         ];
 
         $rules = [
-            'login_identifier' => 'required|string', 
+            'login_identifier' => 'required|string',
             'password' => 'required|string|min:6',
         ];
 
@@ -113,15 +113,18 @@ class AuthController extends Controller
                 'message' => $validator->errors()
             ]);
         }
+
         $user = User::where('email', $request->login_identifier)
-                    ->orWhere('username', $request->login_identifier)
-                    ->first();
+            ->orWhere('username', $request->login_identifier)
+            ->first();
+
         if (!$user) {
             return response()->json([
                 'error' => true,
                 'message' => ['login_identifier' => 'Email atau username tidak ditemukan.']
             ], 404);
         }
+
         if (Hash::check($request->password, $user->password)) {
             Auth::login($user);
             $token = JWTAuth::fromUser($user);
@@ -129,14 +132,22 @@ class AuthController extends Controller
             session([
                 'jwt_token' => $token,
                 'paramId' => $user->id,
+                'role_id' => $user->role_id,
                 'seed' => $this->generateRandomSeed(60)
             ]);
 
+            if ($user->role_id == 1) {
+                $redirectUrl = url('/admin/book');
+            } else {
+                $redirectUrl = url('/book/beranda');
+            }
+
             return response()->json([
                 'error' => false,
-                'redirect_url' => url('/'),
+                'redirect_url' => $redirectUrl,
                 'jwt_token' => $token,
                 'paramId' => $user->id,
+                'role_id' => session('role_id'),
                 'seed' => session('seed')
             ]);
         } else {
@@ -145,8 +156,6 @@ class AuthController extends Controller
                 'message' => ['password' => 'Password yang Anda masukkan salah.']
             ], 401);
         }
-
-
     }
 
     public function activate($token)
@@ -244,4 +253,67 @@ class AuthController extends Controller
         ]);
     }
 
+    public function showProfile()
+    {
+        return view('book.profile');
+    }
+
+    public function showUsername()
+    {
+        $user = Auth::user();
+        return view('book.part.username', ['username' => $user->username]);
+    }
+
+    public function showEmail()
+    {
+        return view('book.part.email');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $messages = [
+            'username.required' => 'Username is required',
+        ];
+
+        $rules = [
+            'username' => 'required|string|max:50',
+            'paramId' => 'required|integer',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()->first()
+            ]);
+        }
+        $user = User::find($request->paramId);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found'
+            ]);
+        }
+        $user->username = $request->username;
+        $user->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Profile updated successfully'
+        ]);
+    }
+
+    public function updateEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        $user = Auth::user();
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json(['success' => false, 'message' => 'Incorrect password!']);
+        }
+        $user->email = $request->email;
+        $user->save();
+
+        return response()->json(['success' => true, 'message' => 'Email updated successfully!']);
+    }
 }

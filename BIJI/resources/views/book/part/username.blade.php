@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--=============== FAVICON ===============-->
-    <link
-      rel="shortcut icon"
-      href="../assets/images/icon.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="../assets/images/icon.png" type="image/x-icon" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,42 +17,47 @@
     <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css" />
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="../assets/css/user.css" />
+    <link rel="stylesheet" href="../assets/css/user.min.css" />
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"
         rel="stylesheet" />
-    <title>BIJI | Riwayat</title>
+    <title>BIJI | Username</title>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body>
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav-logo"> <img src="../assets/images/icon.png" alt=""> BIJI </a>
+            <a href="#" class="nav-logo"> <i class="ri-book-3-line"></i> BIJI </a>
             <div class="nav-menu">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="{{url('/book/beranda')}}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="ri-home-4-line"></i>
                             <span>Beranda</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/book/favorite')}}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="ri-heart-3-line"></i>
                             <span>Favorit</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{url('/book/loan-history')}}" class="nav-link active-link">
-                        <i class="ri-time-line"></i>
-                            <span>Riwayat</span>
+                        <a href="#" class="nav-link active-link">
+                            <i class="ri-user-3-line"></i>
+                            <span>Profil</span>
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="nav-actions">
-                <i class="ri-logout-box-r-line" id="logoutIcon"></i>
+            <i class="ri-logout-box-r-line" id="logoutIcon"></i>
             </div>
         </nav>
     </header>
@@ -72,35 +73,17 @@
 
     <!--==================== MAIN ====================-->
     <main class="main">
-
-        <!--==================== NEW BOOKS ====================-->
-        <section class="new section" id="new">
-            <h2 class="section-title">Favorite Book</h2>
-            <div class="new-container container">
-                <div class="new-swiper">
-                    <div class="new-book">
-                        @foreach($loanHistory as $loan)
-                            <div class="new-card">
-                                <a class="flex" href="" book-id="">
-                                    <img src="{{ asset('storage/' . $loan->book->cover_image) }}" alt="new book"
-                                        class="new-img">
-                                    <div>
-                                        <h2 class="new-title">{{ $loan->book->title }}</h2>
-                                        <div class="new-prices">
-                                            <span class="new-discount">{{ $loan->loan_date }}</span>
-                                        </div>
-                                        <div class="status">
-                                            <span class="status-label 
-                                    {{ $loan->status === 'sedang dipinjam' ? 'status-pending' : 'status-returned' }}">
-                                                {{ ucfirst($loan->status) }}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
+        <section class="edit-profile section">
+            <h2 class="section-title">Ubah Profil</h2>
+            <div class="update-profile container grid">
+                <form class="edit-form" id="edit-profile-form">
+                    <div class="form-icon">
+                        <label for="username">Username</label>
+                        <span class="icon-float"><i class="ri-user-3-line"></i></span>
+                        <input type="text" name="username" id="username" value="{{ $username }}" class="input-form">
                     </div>
-                </div>
+                    <button type="submit" class="button">Update</button>
+                </form>
             </div>
         </section>
     </main>
@@ -202,28 +185,75 @@
     <!--=============== MAIN JS ===============-->
     <script src="../assets/js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#logoutIcon').on('click', function () {
-            $.ajax({
-                url: '/logout',
-                type: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function (response) {
-                    window.location.href = '/';
-                },
-                error: function (xhr, status, error) {
-                    console.error('Logout failed:', error);
-                    alert('Logout failed. Please try again.');
-                }
+    <script>
+        $(document).ready(function () {
+            $('#logoutIcon').on('click', function () {
+                $.ajax({
+                    url: '/logout',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (response) {
+                        window.location.href = '/auth';
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Logout failed:', error);
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+            $('#edit-profile-form').on('submit', function (e) {
+                e.preventDefault(); 
+
+                const username = $('#username').val();
+                const paramId = "{{ session('paramId') }}"; 
+                $.ajax({
+                    url: '/update-profile', 
+                    type: 'POST',
+                    data: {
+                        username: username,
+                        paramId: paramId
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Profile updated successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.message || 'Something went wrong!',
+                                icon: 'error',
+                                confirmButtonText: 'Try Again'
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Something went wrong!',
+                            icon: 'error',
+                            confirmButtonText: 'Try Again'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

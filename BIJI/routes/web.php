@@ -40,4 +40,26 @@ Route::get('/book/favorite', [UserController::class, 'showFavorite']);
 Route::get('/book/search', [UserController::class, 'search'])->name('books.search');
 Route::get('/book/detail/{book_id}', [UserController::class, 'show'])->name('book.detail');
 Route::post('/book/toggle', [UserController::class, 'toggle'])->name('favorite.toggle');
-Route::get('/book/loan-history/', [UserController::class, 'showRiwayat'])->name('loanHistory.index');
+Route::get('/user/riwayat/', [UserController::class, 'showRiwayat'])->name('loanHistory.index');
+Route::get('/user/profile', [AuthController::class, 'showProfile']);
+Route::post('/update-profile', [AuthController::class, 'updateProfile']);
+Route::post('/update-email', [AuthController::class, 'updateEmail']);
+Route::get('/user/username', [AuthController::class, 'showUsername']);
+Route::get('/user/email', [AuthController::class, 'showEmail']);
+Route::get('/user/password', [AuthController::class, 'showPassword']);
+
+//admin
+Route::get('/admin/book', [BookController::class, 'showAdminBook']);
+Route::post('/book/add', [BookController::class, 'store']);
+Route::get('/book/show/{id}', [BookController::class, 'showBook']);
+Route::delete('/book/delete/{id}', [BookController::class, 'delete']);
+Route::get('/book/edit/{id}', [BookController::class, 'getBookData']);
+Route::post('/book/edit/{id}', [BookController::class, 'update']);
+
+Route::get('/admin/data', [BookController::class, 'showAdminData']);
+Route::post('/data/add', [BookController::class, 'storeFaq']);
+Route::delete('/data/delete/{id}', [BookController::class, 'deleteFaq']);
+
+Route::get('/admin/pinjam', [BookController::class, 'showAdminLoan']);
+Route::post('/book/approve/{bookId}', [BookController::class, 'approveLoan']);
+Route::post('/book/rejected/{bookId}', [BookController::class, 'rejectedLoan']);
