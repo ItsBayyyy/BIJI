@@ -107,9 +107,7 @@
     <footer class="footer">
         <div class="footer-container container grid">
             <div>
-                <a href="#" class="footer-logo">
-                    <i class="ri-book-3-line"></i> BIJI
-                </a>
+                <a href="#" class="footer-logo"> <img src="/assets/images/icon.png" alt=""> BIJI </a>
                 <p class="footer-description">
                     Find and explore the best <br />
                     Books from all your <br />

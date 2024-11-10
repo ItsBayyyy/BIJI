@@ -28,23 +28,23 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav-logo"> <i class="ri-book-3-line"></i> BIJI </a>
+            <a href="#" class="nav-logo"> <img src="../assets/images/icon.png" alt=""> BIJI </a>
             <div class="nav-menu">
-                <ul class="nav-list">
+            <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{url('/book/beranda')}}" class="nav-link">
                             <i class="ri-home-4-line"></i>
                             <span>Beranda</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{url('/book/favorite')}}" class="nav-link">
                             <i class="ri-heart-3-line"></i>
                             <span>Favorit</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link active-link">
+                        <a href="{{url('/user/profile')}}" class="nav-link active-link">
                             <i class="ri-user-3-line"></i>
                             <span>Profil</span>
                         </a>
@@ -71,25 +71,25 @@
         <section class="profile section">
             <h2 class="section-title">Profil</h2>
             <div class="profile-container container grid">
-                <a href="profile.html" class="profile-list">
+                <a href="{{url('/user/username')}}" class="profile-list">
                     <span class="icon-profile">
                         <i class="ri-user-settings-line"></i>
                     </span>
                     <h3>Ubah Profil</h3>
                 </a>
-                <a href="ubah-password.html" class="profile-list">
+                <!-- <a href="{{url('/user/username')}}" class="profile-list">
                     <span class="icon-profile">
                         <i class="ri-lock-2-line"></i>
                     </span>
                     <h3>Ubah Password</h3>
-                </a>
-                <a href="ubah.email.html" class="profile-list">
+                </a> -->
+                <a href="{{url('/user/email')}}" class="profile-list">
                     <span class="icon-profile">
                         <i class="ri-mail-settings-line"></i>
                     </span>
                     <h3>Ubah Email</h3>
                 </a>
-                <a href="riwayat-peminjaman.html" class="profile-list">
+                <a href="{{url('/user/riwayat')}}" class="profile-list">
                     <span class="icon-profile">
                         <i class="ri-history-line"></i>
                     </span>
@@ -103,9 +103,7 @@
     <footer class="footer">
         <div class="footer-container container grid">
             <div>
-                <a href="#" class="footer-logo">
-                    <i class="ri-book-3-line"></i> BIJI
-                </a>
+                <a href="#" class="footer-logo"> <img src="../assets/images/icon.png" alt=""> BIJI </a>
                 <p class="footer-description">
                     Find and explore the best <br />
                     Books from all your <br />

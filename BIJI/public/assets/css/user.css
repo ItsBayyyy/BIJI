@@ -668,6 +668,10 @@ body.dark-theme {
     font-size: 1.25rem;
 }
 
+.footer-logo img {
+    width: 10%;
+}
+
 .footer-data {
     grid-template-columns: repeat(2, max-content);
     gap: 3rem 2rem;
