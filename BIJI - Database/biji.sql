@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 09, 2024 at 03:56 PM
+-- Generation Time: Nov 10, 2024 at 01:48 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -54,6 +54,22 @@ CREATE TABLE `books` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `title`, `author`, `synopsis`, `genre_1`, `genre_2`, `cover_image`, `available_copies`, `created_at`, `updated_at`) VALUES
+(1, 'To Kill a Mockingbird', 'Harper Lee', '<p>The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. &quot;To Kill A Mockingbird&quot; became both an instant bestseller and a critical success when it was first published in 1960. It went on to win the Pulitzer Prize in 1961 and was later made into an Academy Award-winning film, also a classic.</p>', 'Fiksi', 'Sejarah', 'books/7zW4XpKuetPAkxVIgd3ky8pHyId3FSZJuF3lom96.jpg', 123, '2024-11-09 17:40:20', '2024-11-09 17:40:20'),
+(2, '1984', 'George Orwell ,  Thomas Pynchon', '<p>A masterpiece of rebellion and imprisonment where war is peace freedom is slavery and Big Brother is watching. Thought Police, Big Brother, Orwellian - these words have entered our vocabulary because of George Orwell&#39;s classic dystopian novel 1984.</p>', 'Klasik', NULL, 'books/5afagOKC4lfGeQc9DSKfA2JCka1ulWLSaNLomE9b.jpg', 43, '2024-11-09 17:41:15', '2024-11-09 17:41:15'),
+(3, 'The Great Gatsby', 'F. Scott Fitzgerald', '<p><b>The Great Gatsby</b>, F. Scott Fitzgerald&#39;s third book, stands as the supreme achievement of his career. This exemplary novel of the Jazz Age has been acclaimed by generations of readers. The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when&nbsp;<i>The New York Times</i>&nbsp;noted &quot;gin was the national drink and sex the national obsession,&quot; it is an exquisitely crafted tale of America in the 1920s.</p>', 'Fiksi', 'Romance', 'books/3o4uA44Gm5VwAeph97SG3Q6AMJUs2n2Gk3MZFypF.jpg', 54, '2024-11-09 17:42:14', '2024-11-09 17:42:14'),
+(4, 'Harry Potter and the Sorcerer’s Stone', 'J.K. Rowling ,  Olly Moss', '<p>&quot;Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter &#39;H&#39;.&quot;</p>', 'Fantasi', 'Sihir', 'books/RtBBVI9FMPWopEJmCYcMdkUslgVgqTdz0QLk3jnj.jpg', 54, '2024-11-09 17:43:15', '2024-11-09 17:43:15'),
+(5, 'Animal Farm', 'George Orwell ,  Russell Baker', '<p>A farm is taken over by its overworked, mistreated animals. With flaming idealism and stirring slogans, they set out to create a paradise of progress, justice, and equality.</p>', 'Fiksi', 'Novel', 'books/0CiUnjWqE1ychItGuWvesGifxXPBzKrTrpciJjpv.jpg', 43, '2024-11-09 17:43:58', '2024-11-09 17:43:58'),
+(6, 'The Hobbit', 'J.R.R. Tolkien ,  Douglas A. Anderson', '<p>In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort.</p>', 'Fantasi', 'Sihir', 'books/tPbS1IJrBIu3qVj9PJzfYN40a3xYSORjRnGHJ2zq.jpg', 56, '2024-11-09 17:44:44', '2024-11-09 17:44:44'),
+(7, 'The Little Prince', 'Antoine de Saint-Exupéry ,  Richard Howard', '<p>A pilot stranded in the desert awakes one morning to see, standing before him, the most extraordinary little fellow. &quot;Please,&quot; asks the stranger, &quot;draw me a sheep.&quot; And the pilot realizes that when life&#39;s events are too difficult to understand, there is no choice but to succumb to their mysteries.</p>', 'Fiksi', NULL, 'books/Cbv4g0R51WfRl872TeOYjzpUcT4KHR1rKLD5R7jK.jpg', 321, '2024-11-09 17:45:26', '2024-11-09 17:45:26'),
+(8, 'Fahrenheit 451', 'Ray Bradbury', '<p><b>Sixty years after its original publication, Ray Bradbury&rsquo;s internationally acclaimed novel Fahrenheit 451 stands as a classic of world literature set in a bleak, dystopian future. Today its message has grown more relevant than ever before.</b></p>', 'Fiksi', 'Klasik', 'books/cktMS2zYEntId27bj6Q3LNVujY8kXCeIWIqpQFVy.jpg', 57, '2024-11-09 17:46:06', '2024-11-09 17:46:06'),
+(9, 'The Catcher in the Rye', 'J.D. Salinger', '<p>Fleeing the crooks at Pencey Prep, he pinballs around New York City seeking solace in fleeting encounters&mdash;shooting the bull with strangers in dive hotels, wandering alone round Central Park, getting beaten up by pimps and cut down by erstwhile girlfriends.</p>', 'Novel', NULL, 'books/8zbCJw4wDMigMLAKP9toBUSJf7QtHlmO6Xb4YGUL.jpg', 78, '2024-11-09 17:46:42', '2024-11-09 17:46:42'),
+(10, 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis ,  Tormod Haugen', '<p>Lucy is the first to find the secret of the wardrobe in the professor&#39;s mysterious old house. At first her brothers and sister don&#39;t believe her when she tells of her visit to the land of Narnia. But soon Edmund, then Peter and Susan step through the wardrobe themselves.</p>', 'Petualangan', 'Klasik', 'books/kPHm1opm7GjNd0NPGrmvc4TZ6HWi8ad52I5aPic2.jpg', 45, '2024-11-09 17:47:56', '2024-11-09 17:47:56');
 
 -- --------------------------------------------------------
 
@@ -206,19 +222,19 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(14, '0001_01_01_000000_create_users_table', 1),
-(15, '0001_01_01_000001_create_cache_table', 1),
-(16, '0001_01_01_000002_create_jobs_table', 1),
-(17, '2024_11_04_080126_create_books_table', 1),
-(18, '2024_11_04_080148_create_favorites_table', 1),
-(19, '2024_11_04_080200_create_reviews_table', 1),
-(20, '2024_11_04_080223_create_loan_history_table', 1),
-(21, '2024_11_04_080241_create_admins_table', 1),
-(22, '2024_11_04_125046_add_verification_columns_to_users_table', 1),
-(23, '2024_11_06_070310_add_forgot_token_columns_to_users', 1),
-(24, '2024_11_08_214853_faqs', 1),
-(25, '2024_11_08_214907_knowledge', 1),
-(26, '2024_11_09_143454_add_role', 1);
+(1, '0001_01_01_000000_create_users_table', 1),
+(2, '0001_01_01_000001_create_cache_table', 1),
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2024_11_04_080126_create_books_table', 1),
+(5, '2024_11_04_080148_create_favorites_table', 1),
+(6, '2024_11_04_080200_create_reviews_table', 1),
+(7, '2024_11_04_080223_create_loan_history_table', 1),
+(8, '2024_11_04_080241_create_admins_table', 1),
+(9, '2024_11_04_125046_add_verification_columns_to_users_table', 1),
+(10, '2024_11_06_070310_add_forgot_token_columns_to_users', 1),
+(11, '2024_11_08_214853_faqs', 1),
+(12, '2024_11_08_214907_knowledge', 1),
+(13, '2024_11_09_143454_add_role', 1);
 
 -- --------------------------------------------------------
 
@@ -255,8 +271,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('8lFvQq4rBoXqkUrs0gb3rV4XZGFKe85OBeYSYMKG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoic1hObEpQandtcWNKUkpPaTdhVGNLREp1MWo5NDZDcW5qZXhxVkcyVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6OToiand0X3Rva2VuIjtzOjMxMToiZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SnBjM01pT2lKb2RIUndPaTh2TVRJM0xqQXVNQzR4T2pnd01EQXZiRzluYVc0aUxDSnBZWFFpT2pFM016RXhOalExTkRJc0ltVjRjQ0k2TVRjek1URTJPREUwTWl3aWJtSm1Jam94TnpNeE1UWTBOVFF5TENKcWRHa2lPaUpsVGtGVmVGbFRSSEV4YTA5Rk0wMWhJaXdpYzNWaUlqb2lNaUlzSW5CeWRpSTZJakl6WW1RMVl6ZzVORGxtTmpBd1lXUmlNemxsTnpBeFl6UXdNRGczTW1SaU4yRTFPVGMyWmpjaWZRLnFSOTNpOUllM0t4UVZka0g3NnA2akl4MnZMYVQycWxGN3lvRUh5V2RLb2ciO3M6NzoicGFyYW1JZCI7aToyO3M6Nzoicm9sZV9pZCI7czoxOiIwIjtzOjQ6InNlZWQiO3M6NjA6IktMYVZ1T0V5bGc5YWk5VU9vbnNIbmdLckR2emJiYWFHVHVQN2lhaEwxMFRDWWFKQmcyUWhjRGFuc1Z2SiI7fQ==', 1731167319),
-('HmKfMekzVc7TBDtckvMQRJipNDCOX7MJqR2p3Hyz', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36 Edg/130.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNndKcnFWeEpzOXd5RHVSVXZ1VUoyMGJ2NHJYN2o0dnZQdkxlZmduRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hdXRoIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1731167450);
+('WnNvRwqvlUUf5AW4NRkdSs2EOzCKdho3Q14MXgvO', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidWZIZXB3NlQ4ZlZLdjh3UTZlbk05aksydlFwNGNwQjliSFVCd3hjWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9ib29rIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1731203276);
 
 -- --------------------------------------------------------
 
@@ -278,14 +293,6 @@ CREATE TABLE `users` (
   `password_change_at` timestamp NULL DEFAULT NULL,
   `role_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `verified`, `created_at`, `updated_at`, `verification_token`, `email_verified_at`, `forgot_password_token`, `password_change_at`, `role_id`) VALUES
-(1, 'admin@admin.com', 'admin22', '$2y$12$foLAi8Ribe/HS5RyqK29ku6AqhtDTeDfvUKb96UYA0ooKKr/kgt02', 1, NULL, NULL, NULL, NULL, NULL, NULL, '1'),
-(2, 'petikang07@gmail.com', 'Bayu', '$2y$12$iZdNnzF159pVHrLLrk9K9uUTacHT45obqMxmcGj0OYmVOKa/V0ZNS', 1, NULL, '2024-11-09 07:33:30', NULL, NULL, NULL, NULL, '0');
 
 --
 -- Indexes for dumped tables
@@ -409,7 +416,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -451,7 +458,7 @@ ALTER TABLE `loan_history`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -463,7 +470,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
