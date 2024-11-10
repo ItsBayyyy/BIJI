@@ -69,7 +69,7 @@ class AuthController extends Controller
             $user = User::create([
                 'username' => $request->input('username'),
                 'email' => $request->input('email'),
-                'password' => bcrypt($request->input('password')),
+                'password' => bcrypt($request->input('password_register')),
                 'verification_token' => Str::random(60),
             ]);
 
@@ -93,70 +93,66 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $messages = [
-            'login_identifier.required' => 'Username atau Email harus diisi',
-            'login_identifier.exists' => 'Username atau Email tidak ditemukan',
-            'password.required' => 'Kata sandi harus diisi',
-        ];
+{
+    $messages = [
+        'login_identifier.required' => 'Username atau Email harus diisi',
+        'login_identifier.exists' => 'Username atau Email tidak ditemukan',
+        'password.required' => 'Kata sandi harus diisi',
+    ];
 
-        $rules = [
-            'login_identifier' => 'required|string',
-            'password' => 'required|string|min:6',
-        ];
+    $rules = [
+        'login_identifier' => 'required|string',
+        'password' => 'required|string|min:6',
+    ];
 
-        $validator = Validator::make($request->all(), $rules, $messages);
+    $validator = Validator::make($request->all(), $rules, $messages);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'error' => true,
-                'message' => $validator->errors()
-            ]);
-        }
-
-        $user = User::where('email', $request->login_identifier)
-            ->orWhere('username', $request->login_identifier)
-            ->first();
-
-        if (!$user) {
-            return response()->json([
-                'error' => true,
-                'message' => ['login_identifier' => 'Email atau username tidak ditemukan.']
-            ], 404);
-        }
-
-        if (Hash::check($request->password, $user->password)) {
-            Auth::login($user);
-            $token = JWTAuth::fromUser($user);
-
-            session([
-                'jwt_token' => $token,
-                'paramId' => $user->id,
-                'role_id' => $user->role_id,
-                'seed' => $this->generateRandomSeed(60)
-            ]);
-
-            if ($user->role_id == 1) {
-                $redirectUrl = url('/admin/book');
-            } else {
-                $redirectUrl = url('/book/beranda');
-            }
-
-            return response()->json([
-                'error' => false,
-                'redirect_url' => $redirectUrl,
-                'jwt_token' => $token,
-                'paramId' => $user->id,
-                'role_id' => session('role_id'),
-                'seed' => session('seed')
-            ]);
-        } else {
-            return response()->json([
-                'error' => true,
-                'message' => ['password' => 'Password yang Anda masukkan salah.']
-            ], 401);
-        }
+    if ($validator->fails()) {
+        return response()->json([
+            'error' => true,
+            'message' => $validator->errors()
+        ]);
     }
+
+    $user = User::where('email', $request->login_identifier)
+        ->orWhere('username', $request->login_identifier)
+        ->first();
+
+    if (!$user) {
+        return response()->json([
+            'error' => true,
+            'message' => ['login_identifier' => 'Email atau username tidak ditemukan.']
+        ], 404);
+    }
+    if (!Hash::check($request->password, $user->password)) {
+        return response()->json([
+            'error' => true,
+            'message' => ['password' => 'Password yang Anda masukkan salah.']
+        ], 401);
+    }
+
+    Auth::login($user);
+    $token = JWTAuth::fromUser($user);
+
+    session([
+        'jwt_token' => $token,
+        'paramId' => $user->id,
+        'role_id' => $user->role_id,
+        'seed' => $this->generateRandomSeed(60)
+    ]);
+
+    $redirectUrl = $user->role_id == 1 ? url('/admin/book') : url('/book/beranda');
+
+    return response()->json([
+        'error' => false,
+        'redirect_url' => $redirectUrl,
+        'jwt_token' => $token,
+        'paramId' => $user->id,
+        'role_id' => session('role_id'),
+        'seed' => session('seed')
+    ]);
+}
+
 
     public function activate($token)
     {

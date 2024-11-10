@@ -8,7 +8,7 @@
 </head>
 <body style="background-color: #f3f4f6; font-family: 'Poppins', Arial, sans-serif; margin: 0; padding: 0; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center;">
     <div style="background-color: #ffffff; padding: 2rem; border-radius: 0.5rem; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); max-width: 28rem; text-align: center; margin: auto;">
-        <img src="{{url('public/assets/images/tes.jpg')}}" alt="tes" style="width: 6rem; height: 6rem; margin: 0 auto; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);" />
+        <img src="https://i.ibb.co.com/M2Fr2VY/icon.png" alt="tes" style="width: 6rem; height: 6rem; margin: 0 auto; border-radius: 50%; margin-bottom: 1rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);" />
         
         <h1 style="font-size: 1.5rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;">Halo, {{ $user->username }}</h1>
         
