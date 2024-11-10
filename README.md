@@ -136,19 +136,16 @@ VITE_APP_NAME="${APP_NAME}"
 JWT_SECRET=6WnZQV9iXt3mthMOuqgrz6GfAPAhjuzvJLsDIJu8yHF0f9PZLszt6JLSCNxfLUlL
 ```
 
-### 5. Nama Database
-ganti nama dabase menjadi **BIJI**
-
-### 6. DATABASE
+### 5. DATABASE
 import database, kamu bisa ambil di folder BIJI - Database
 
-### 7. APP KEY
+### 6. APP KEY
 jalankan perintah ini di terminal kamu
 ```bash
 php artisan key:generate
 ```
 
-### 8. Storage Link
+### 7. Storage Link
 jalankan perintah ini di terminal kamu
 ```bash
 cd public
@@ -160,7 +157,7 @@ rm storage
 cd ..
 ```
 
-### 9. Seeder untuk akun dan data bot
+### 8. Seeder untuk akun dan data bot
 jalankan perintah ini di terminal kamu
 ```bash
 php artisan db:seed
@@ -175,7 +172,7 @@ bayuardana213@gmail.com
 password123
 ```
 
-### 10. SERVER
+### 9. SERVER
 jalankan perintah ini untuk melihat tampilan web
 ```bash
 php artisan serve
