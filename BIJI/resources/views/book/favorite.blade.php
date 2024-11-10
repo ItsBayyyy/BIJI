@@ -229,7 +229,33 @@
             });
         });
     </script>
+<script>
+        $(document).ready(function () {
+            $('.loved button').on('click', function () {
+                let button = $(this);
+                let bookId = button.data('book-id');
 
+                $.ajax({
+                    url: "{{ route('favorite.toggle') }}",
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        book_id: bookId,
+                    },
+                    success: function (response) {
+                        if (response.status === 'added') {
+                            button.find('i').removeClass('ri-heart-3-line').addClass('ri-heart-3-fill');
+                        } else if (response.status === 'removed') {
+                            button.find('i').removeClass('ri-heart-3-fill').addClass('ri-heart-3-line');
+                        }
+                    },
+                    error: function (xhr) {
+                        console.error("Error:", xhr);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -74,13 +74,13 @@
                 <div class="new-container container">
                     <div class="detail-book">
                         <article class="card-detail">
-                            <img src="images/book-1.png" alt="new book" class="new-img detail-img" />
+                            <img src="{{ asset('storage/' . $loan->book->cover_image) }}" alt="new book" class="new-img detail-img" />
                             <div>
                                 <h2 class="new-title title-detail">{{$loan->book->title}}</h2>
                                 <div class="new-prices">
                                     <span class="new-discount">{{$loan->book->author}}</span>
                                 </div>
-                                <p>{{$loan->book->synopsis}}</p>
+                                <p>{!!$loan->book->synopsis!!}</p>
                                 <div class="btn">
                                     @if($loan->status === 'pending')
                                     <h3>Status:</h3>
