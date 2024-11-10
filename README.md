@@ -44,16 +44,25 @@ Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini:
 ### 1. Clone Repositori
 Clone repositori ini ke terminal kamu dengan perintah:
 ```bash
-git clone https://github.com/username/nama-proyek.git
+git clone https://github.com/ItsBayyyy/BIJI.git
 ```
 
-### 2. FILE ENV
+### 2. Masuk Folder
+jalankan perintah ini di terminal kamu
+```bash
+cd BIJI
+```
+```bash
+cd BIJI
+```
+
+### 3. FILE ENV
 buat file .env atau copy file .env.example
 ```bash
 cp .env.example .env
 ```
 
-### 3. Pastekan kode ini
+### 4. Pastekan kode ini
 Pastekan kode ini di .env yang baru saja dibuat
 ```bash
 APP_NAME=BIJI
@@ -127,9 +136,6 @@ VITE_APP_NAME="${APP_NAME}"
 JWT_SECRET=6WnZQV9iXt3mthMOuqgrz6GfAPAhjuzvJLsDIJu8yHF0f9PZLszt6JLSCNxfLUlL
 ```
 
-### 4. Nama Database
-ganti nama dabase menjadi **BIJI**
-
 ### 5. DATABASE
 import database, kamu bisa ambil di folder BIJI - Database
 
@@ -139,7 +145,19 @@ jalankan perintah ini di terminal kamu
 php artisan key:generate
 ```
 
-### 7. Seeder untuk akun dan data bot
+### 7. Storage Link
+jalankan perintah ini di terminal kamu
+```bash
+cd public
+```
+```bash
+rm storage
+```
+```bash
+cd ..
+```
+
+### 8. Seeder untuk akun dan data bot
 jalankan perintah ini di terminal kamu
 ```bash
 php artisan db:seed
@@ -154,7 +172,7 @@ bayuardana213@gmail.com
 password123
 ```
 
-### 8. SERVER
+### 9. SERVER
 jalankan perintah ini untuk melihat tampilan web
 ```bash
 php artisan serve
