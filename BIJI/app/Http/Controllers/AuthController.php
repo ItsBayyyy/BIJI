@@ -14,9 +14,14 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function showAuth()
+    public function showLogin()
     {
-        return view('auth.auth');
+        return view('auth.login');
+    }
+
+    public function showRegister()
+    {
+        return view('auth.register');
     }
 
     public function showActivate()

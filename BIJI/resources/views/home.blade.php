@@ -2,12 +2,8 @@
 <html lang="en">
 
 <head>
+	<link rel="shortcut icon" href="../assets/images/icon.png" type="image/x-icon" />
 	<title>BIJI | Home</title>
-    <link
-      rel="shortcut icon"
-      href="../assets/images/icon.png"
-      type="image/x-icon"
-    />
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +15,6 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
 
 	<link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="../assets/icomoon/icomoon.css">
@@ -36,27 +31,15 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
-						<div class="social-links">
-							<ul>
-								<li>
-									<a href="#"><i class="icon icon-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-youtube-play"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="icon icon-behance-square"></i></a>
-								</li>
-							</ul>
-						</div><!--social-links-->
 					</div>
 					<div class="col-md-6">
 						<div class="right-element">
-							<a href="/auth" class="user-account for-buy"><i
-									class="icon icon-user"></i><span>Login</span></a>
+							<a href="/login" class="user-account for-buy"><i
+									class="icon icon-user"></i><span>Masuk</span></a>
+
+							<div class="action-menu">
+
+							</div>
 
 						</div><!--top-right-->
 					</div>
@@ -71,7 +54,7 @@
 
 					<div class="col-md-2">
 						<div class="main-logo">
-							<a href="#"><img src="../assets/images/icon.png" alt="logo" style="width: 20%;">BIJI</a>
+							<a href="index.html"><img src="../assets/images/main-logo.png" alt="logo"></a>
 						</div>
 
 					</div>
@@ -82,7 +65,7 @@
 							<div class="main-menu stellarnav">
 								<ul class="menu-list">
 									<li class="menu-item active"><a href="#home">Home</a></li>
-									<li class="menu-item"><a href="#popular-books" class="nav-link">Popular</a></li>
+									<li class="menu-item"><a href="#best-sell" class="nav-link">Best Sell</a></li>
 								</ul>
 
 								<div class="hamburger">
@@ -108,22 +91,43 @@
 			<div class="row">
 				<div class="col-md-12">
 
+					<button class="prev slick-arrow">
+						<i class="icon icon-arrow-left"></i>
+					</button>
+
 					<div class="main-slider pattern-overlay">
 						<div class="slider-item">
 							<div class="banner-content">
-								<h2 class="banner-title">Life of the Wild</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
-									ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
-									urna, a eu.</p>
+								<h2 class="banner-title">Harry Potter</h2>
+								<p>Membalik amplop itu, tangannya gemetar, Harry melihat segel lilin ungu bertuliskan
+									lambang; singa, elang, luak, dan ular mengelilingi huruf besar.</p>
 								<div class="btn-wrap">
-									<a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i
+									<a href="#" class="btn btn-outline-accent btn-accent-arrow">Lihat Detail<i
 											class="icon icon-ns-arrow-right"></i></a>
 								</div>
 							</div><!--banner-content-->
-							<img src="../assets/images/main-banner1.jpg" alt="banner" class="banner-image">
+							<img src="../assets/images/book/book4.jpg" alt="banner" class="banner-image">
+						</div><!--slider-item-->
+
+						<div class="slider-item">
+							<div class="banner-content">
+								<h2 class="banner-title">The Great Gatsby</h2>
+								<p>Kisah Jay Gatsby yang sangat kaya dan cintanya pada Daisy Buchanan yang cantik, pesta
+									mewah di Long Island pada saat The New York Times mencatat adalah minuman nasional.
+								</p>
+								<div class="btn-wrap">
+									<a href="#" class="btn btn-outline-accent btn-accent-arrow">Lihat Detail<i
+											class="icon icon-ns-arrow-right"></i></a>
+								</div>
+							</div><!--banner-content-->
+							<img src="../assets/images/book/book3.jpg" alt="banner" class="banner-image">
 						</div><!--slider-item-->
 
 					</div><!--slider-->
+
+					<button class="next slick-arrow">
+						<i class="icon icon-arrow-right"></i>
+					</button>
 
 				</div>
 			</div>
@@ -131,401 +135,75 @@
 
 	</section>
 
-	<section id="popular-books" class="bookshelf py-5 my-5">
+	<section id="client-holder" data-aos="fade-up">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-
-					<div class="section-header align-center">
-						<div class="title">
-							<span>Some quality items</span>
+				<div class="inner-content">
+					<div class="logo-wrap">
+						<div class="grid">
+							<a href="#"><img src="../assets/images/client-image1.png" alt="client"></a>
+							<a href="#"><img src="../assets/images/client-image2.png" alt="client"></a>
+							<a href="#"><img src="../assets/images/client-image3.png" alt="client"></a>
+							<a href="#"><img src="../assets/images/client-image4.png" alt="client"></a>
+							<a href="#"><img src="../assets/images/client-image5.png" alt="client"></a>
 						</div>
-						<h2 class="section-title">Popular Books</h2>
-					</div>
+					</div><!--image-holder-->
+				</div>
+			</div>
+		</div>
+	</section>
 
-					<ul class="tabs">
-						<li data-tab-target="#all-genre" class="active tab">All Genre</li>
-						<li data-tab-target="#business" class="tab">Business</li>
-						<li data-tab-target="#technology" class="tab">Technology</li>
-						<li data-tab-target="#romantic" class="tab">Romantic</li>
-						<li data-tab-target="#adventure" class="tab">Adventure</li>
-						<li data-tab-target="#fictional" class="tab">Fictional</li>
-					</ul>
+	<section id="best-sell" class="leaf-pattern-overlay mt-5">
+		<div class="corner-pattern-overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center">
 
-					<div class="tab-content">
-						<div id="all-genre" data-tab-content class="active">
-							<div class="row">
+				<div class="col-md-8">
 
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item1.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Portrait photography</h3>
-											<span>Adam Silber</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
+					<div class="row">
 
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item2.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Once upon a time</h3>
-											<span>Klien Marry</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item3.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Tips of simple lifestyle</h3>
-											<span>Bratt Smith</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item4.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Just felt from outside</h3>
-											<span>Nicole Wilson</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-							</div>
-							<div class="row">
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item5.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Peaceful Enlightment</h3>
-											<span>Marmik Lama</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item6.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Great travel at desert</h3>
-											<span>Sanchit Howdy</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item7.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Life among the pirates</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item8.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Simple way of piece life</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div id="business" data-tab-content>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item2.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Peaceful Enlightment</h3>
-											<span>Marmik Lama</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item4.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Great travel at desert</h3>
-											<span>Sanchit Howdy</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item6.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Life among the pirates</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item8.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Simple way of piece life</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-							</div>
+						<div class="col-md-6">
+							<figure class="products-thumb">
+								<img src="../assets/images/book/book3.jpg" alt="book" class="single-image">
+							</figure>
 						</div>
 
-						<div id="technology" data-tab-content>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item1.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Peaceful Enlightment</h3>
-											<span>Marmik Lama</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
+						<div class="col-md-6">
+							<div class="product-entry">
+								<h2 class="section-title divider">Paling banyak dibaca</h2>
+
+								<div class="products-content">
+									<div class="author-name">By F. Scott Fitzgerald</div>
+									<h3 class="item-title">The Great Gatsby</h3>
+									<p>Kisah Jay Gatsby yang sangat kaya dan cintanya pada Daisy Buchanan yang cantik, pesta
+									mewah di Long Island pada saat The New York Times mencatat adalah minuman nasional.</p>
+									<div class="btn-wrap">
+										<a href="#" class="btn-accent-arrow">lihat detail <i
+												class="icon icon-ns-arrow-right"></i></a>
 									</div>
 								</div>
 
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item3.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Great travel at desert</h3>
-											<span>Sanchit Howdy</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item5.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Life among the pirates</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item7.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Simple way of piece life</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div id="romantic" data-tab-content>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item1.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Peaceful Enlightment</h3>
-											<span>Marmik Lama</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item3.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Great travel at desert</h3>
-											<span>Sanchit Howdy</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item5.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Life among the pirates</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item7.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Simple way of piece life</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div id="adventure" data-tab-content>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item5.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Life among the pirates</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item7.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Simple way of piece life</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div id="fictional" data-tab-content>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item5.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Life among the pirates</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
-
-								<div class="col-md-3">
-									<div class="product-item">
-										<figure class="product-style">
-											<img src="../assets/images/tab-item7.jpg" alt="Books" class="product-item">
-											<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add To Cart</button>
-										</figure>
-										<figcaption>
-											<h3>Simple way of piece life</h3>
-											<span>Armor Ramsey</span>
-											<div class="item-price"><a href="#">View Details</a></div>
-										</figcaption>
-									</div>
-								</div>
 							</div>
 						</div>
 
 					</div>
+					<!-- / row -->
 
-				</div><!--inner-tabs-->
+				</div>
 
 			</div>
 		</div>
 	</section>
+
+	<section id="quotation" class="align-center pb-5 mb-5 mt-5">
+		<div class="inner-content">
+			<h2 class="section-title divider">Kata kata hari ini</h2>
+			<blockquote data-aos="fade-up">
+				<q>“Biji pengetahuan akan tumbuh besar di ladang yang tepat. Mulai petualanganmu bersama BIJI hari ini..”</q>
+				<div class="author-name">Dr. Seuss</div>
+			</blockquote>
+		</div>
+	</section>	
 
 	<footer id="footer">
 		<div class="container">
@@ -536,7 +214,9 @@
 					<div class="footer-item">
 						<div class="company-brand">
 							<img src="../assets/images/main-logo.png" alt="logo" class="footer-logo">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus liberolectus
+								nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna. Adipiscing fames
+								semper erat ac in suspendisse iaculis.</p>
 						</div>
 					</div>
 
@@ -648,26 +328,10 @@
 						<div class="row">
 
 							<div class="col-md-6">
-								<p>&copy; 2024 All rights reserved</p>
+								<p>© 2024 All rights reserved. BIJI.
 							</div>
 
 							<div class="col-md-6">
-								<div class="social-links align-right">
-									<ul>
-										<li>
-											<a href="#"><i class="icon icon-facebook"></i></a>
-										</li>
-										<li>
-											<a href="#"><i class="icon icon-twitter"></i></a>
-										</li>
-										<li>
-											<a href="#"><i class="icon icon-youtube-play"></i></a>
-										</li>
-										<li>
-											<a href="#"><i class="icon icon-behance-square"></i></a>
-										</li>
-									</ul>
-								</div>
 							</div>
 
 						</div>
@@ -683,7 +347,9 @@
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 		crossorigin="anonymous"></script>
 	<script src="../assets/js/plugins.js"></script>
-	<script src="../assets/js/script.js"></script>
+	<script src="../assets/js/script2.js"></script>
+	<script src="../assets/js/slideNav.js"></script>
+	<script src="../assets/js/slideNav.min.js"></script>
 
 </body>
 

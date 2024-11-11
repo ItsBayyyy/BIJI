@@ -87,14 +87,12 @@ class UserController extends Controller
     
     public function store(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'book_id' => 'required|exists:books,id',
             'user_id' => 'required|exists:users,id'
         ]);
 
         try {
-            // Save the loan history to the database
             LoanHistory::create([
                 'book_id' => $request->book_id,
                 'user_id' => $request->user_id,
@@ -107,4 +105,7 @@ class UserController extends Controller
         }
     }
     
+    public function showCustomer() {
+        return view('book.chatbot');
+    }
 }

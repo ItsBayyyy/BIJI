@@ -115,29 +115,6 @@
                 </div>
             @endif
         </section>
-        <button href="#" class="chatbot-btn d-flex align-items-center justify-content-center">
-            <i class="ri-chat-3-line" onclick="openModal()"></i>
-        </button>
-
-        <div id="chatbot" class="chat-container d-flex flex-column hidden">
-            <div class="chat-header" style="background-color: #hsl(36, 63%, 68%); border-color: #hsl(36, 63%, 68%)  ;">
-                <img src="../assets/images/tes.jpg" alt="Bot Profile">
-                <div class="d-flex flex-column">
-                    <span>Nexus Bot</span>
-                </div>
-                <button type="button" class="btn-close btn-close-white ms-auto"><i class="ri-close-line"
-                        onclick="closeModal()"></i></button>
-            </div>
-            <div class="chat-body d-flex flex-column" id="chat-body">
-            </div>
-            <div class="chat-footer">
-                <form id="chat-form">
-                    <input type="text" id="message" class="form-control" placeholder="Type a message...">
-                    <button type="submit" class="btn mt-2"
-                        style="background-color: #hsl(36, 63%, 68%); border-color: #hsl(36, 63%, 68%);">Kirim</button>
-                </form>
-            </div>
-        </div>
 
     </main>
 
@@ -147,9 +124,9 @@
             <div>
                 <a href="#" class="footer-logo"> <img src="../assets/images/icon.png" alt=""> BIJI </a>
                 <p class="footer-description">
-                    Find and explore the best <br />
-                    Books from all your <br />
-                    favorite writers.
+                    Temukan dan jelajahi yang terbaik <br />
+Buku dari semua Anda <br />
+penulis favorit.
                 </p>
             </div>
             <div class="footer-data grid">
@@ -297,7 +274,7 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function (response) {
-                        window.location.href = '/auth';
+                        window.location.href = '/login';
                     },
                     error: function (xhr, status, error) {
                         console.error('Logout failed:', error);

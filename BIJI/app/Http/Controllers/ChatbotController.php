@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Models\Faq;
-use App\Models\Knowledge;
 use Log;
 
 class ChatbotController extends Controller
@@ -13,24 +12,21 @@ class ChatbotController extends Controller
     public function chat(Request $request)
     {
         $input = $this->sanitizeInput($request->input('message'));
-        Log::info('User input: ' . $input);
+
         if ($this->isGreeting($input)) {
-            Log::info('Detected as greeting');
             return response()->json(['response' => "Halo! Ada yang bisa saya bantu?"]);
         }
+
         $response = "Maaf, saya tidak menemukan jawaban untuk pertanyaan Anda.";
 
         if ($this->isProductQuery($input)) {
             $response = $this->searchProduct($input);
-            Log::info('Product search response: ' . $response);
         } else {
             $response = $this->handleGeneralQuestions($input);
-            Log::info('General question response: ' . $response);
         }
 
         if ($response === "Maaf, saya tidak menemukan jawaban untuk pertanyaan Anda.") {
             $response = $this->handleChatSession($input);
-            Log::info('Chat session response: ' . $response);
         }
 
         return response()->json(['response' => $response]);
@@ -38,44 +34,115 @@ class ChatbotController extends Controller
 
     private function searchProduct($input)
     {
+        $genres = $this->extractGenres($input);
+        if ($genres) {
+            return $this->searchByGenre($genres);
+        }
+
         $matchedProducts = $this->fuzzySearch($input);
         if (empty($matchedProducts)) {
             return "Maaf, kami tidak menemukan produk yang Anda cari.";
         }
 
-        $response = "Produk yang kami temukan:<br>";
+        if (count($matchedProducts) == 1) {
+            $product = $matchedProducts[0];
+            return "<strong>" . $product->title . "</strong><br>" .
+                "Author: " . $product->author . "<br>" .
+                "Available: " . $product->available_copies . "<br>" .
+                "Lihat disini: <a href=\"" . url('/book/detail/' . $product->id) . "\">Lihat Detail</a><br>";
+        }
+
+        $response = "Kami menemukan beberapa buku yang mirip dengan pencarian Anda:<br>";
         foreach ($matchedProducts as $product) {
             $response .= "<strong>" . $product->title . "</strong><br>" .
                 "Author: " . $product->author . "<br>" .
-                "Avaible: " . $product->available_copies . "<br>" .
-                "Lihat disini: <a href=\"" . url('/book/detail/'.$product->id, $product->id) . "\">Lihat Detail</a><br><br>";
+                "Available: " . $product->available_copies . "<br>" .
+                "Lihat disini: <a href=\"" . url('/book/detail/' . $product->id) . "\">Lihat Detail</a><br><br>";
         }
         return $response;
     }
-
 
     private function fuzzySearch($input)
     {
         $products = Book::all();
         $bestMatch = [];
-    
+        $input = strtolower($input);
+
         foreach ($products as $product) {
-            if (stripos($input, $product->title) !== false) { 
+            if (stripos($input, $product->title) !== false) {
                 $bestMatch[] = $product;
             }
         }
         if (empty($bestMatch)) {
-            foreach ($products as $product) {
-                $levDistance = levenshtein(strtolower($input), strtolower($product->title));
-                if ($levDistance <= 3) { 
-                    $bestMatch[] = $product;
-                }
-            }
+            $bestMatch = $this->getBooksByLevenshteinDistance($input, $products);
         }
-    
+
         return $bestMatch;
     }
-    
+
+    private function getBooksByLevenshteinDistance($input, $products)
+    {
+        $bestMatch = [];
+        $minDistance = PHP_INT_MAX;
+
+        $input = strtolower($input);
+
+        foreach ($products as $product) {
+            $levDistance = levenshtein($input, strtolower($product->title));
+
+            if ($levDistance < $minDistance) {
+                $bestMatch = [$product];
+                $minDistance = $levDistance;
+            } elseif ($levDistance == $minDistance) {
+                $bestMatch[] = $product;
+            }
+        }
+
+        if (empty($bestMatch)) {
+            return "Maaf, kami tidak menemukan buku yang sesuai.";
+        }
+
+        return $bestMatch;
+    }
+
+    private function searchByGenre($genres)
+    {
+        $books = Book::where(function ($query) use ($genres) {
+            foreach ($genres as $genre) {
+                $query->orWhere('genre_1', 'like', '%' . $genre . '%')
+                    ->orWhere('genre_2', 'like', '%' . $genre . '%');
+            }
+        })->get();
+
+        if ($books->isEmpty()) {
+            return "Maaf, kami tidak menemukan buku dengan genre yang Anda cari.";
+        }
+
+        $response = "Kami menemukan beberapa buku dengan genre yang Anda cari:<br>";
+        foreach ($books as $book) {
+            $response .= "<strong>" . $book->title . "</strong><br>" .
+                "Author: " . $book->author . "<br>" .
+                "Available: " . $book->available_copies . "<br>" .
+                "Lihat disini: <a href=\"" . url('/book/detail/' . $book->id) . "\">Lihat Detail</a><br><br>";
+        }
+        return $response;
+    }
+
+    private function extractGenres($input)
+    {
+        $genreKeywords = ['romance', 'fiksi', 'sejarah', 'fantasi', 'klasik', 'sihir', 'novel', 'petualangan'];
+
+        $input = strtolower($input);
+        $foundGenres = [];
+
+        foreach ($genreKeywords as $genre) {
+            if (stripos($input, $genre) !== false) {
+                $foundGenres[] = $genre;
+            }
+        }
+
+        return $foundGenres;
+    }
 
     private function handleGeneralQuestions($input)
     {
@@ -100,7 +167,6 @@ class ChatbotController extends Controller
         }
         return "Maaf, saya tidak menemukan jawaban untuk pertanyaan Anda.";
     }
-
 
     private function handleChatSession($input)
     {
@@ -139,7 +205,6 @@ class ChatbotController extends Controller
 
         return false;
     }
-
 
     private function isGreeting($input)
     {

@@ -95,6 +95,12 @@
                     </span>
                     <h3>Riwayat Peminjaman</h3>
                 </a>
+                <a href="{{url('/chat')}}" class="profile-list">
+            <span class="icon-profile">
+              <i class="ri-customer-service-2-line"></i>
+            </span>
+            <h3>Customer Service</h3>
+          </a>
             </div>
         </section> 
     </main>
@@ -105,9 +111,9 @@
             <div>
                 <a href="#" class="footer-logo"> <img src="../assets/images/icon.png" alt=""> BIJI </a>
                 <p class="footer-description">
-                    Find and explore the best <br />
-                    Books from all your <br />
-                    favorite writers.
+                    Temukan dan jelajahi yang terbaik <br />
+Buku dari semua Anda <br />
+penulis favorit.
                 </p>
             </div>
             <div class="footer-data grid">
@@ -204,7 +210,7 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function (response) {
-                        window.location.href = '/auth';
+                        window.location.href = '/login';
                     },
                     error: function (xhr, status, error) {
                         console.error('Logout failed:', error);

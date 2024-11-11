@@ -57,7 +57,7 @@
                         <!-- end card -->
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Silahkan login kembali? <a href="/auth" class="fw-semibold  text-decoration-none"
+                            <p class="mb-0">Silahkan login kembali? <a href="/login" class="fw-semibold  text-decoration-none"
                                     style="color: #e6b872;">Login</a></p>
                         </div>
 
@@ -74,7 +74,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script>
         setTimeout(function() {
-            window.location.href = "/auth";
+            window.location.href = "/login";
         }, 2000); 
     </script>
 </body>

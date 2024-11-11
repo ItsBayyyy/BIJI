@@ -2,47 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>BIJI | Auth</title>
-    <link
-      rel="shortcut icon"
-      href="../assets/images/icon.png"
-      type="image/x-icon"
-    />
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/auth.css" />
+    <title>BIJI | Daftar</title>
+    <link rel="shortcut icon" href="../assets/images/icon.png" type="image/x-icon" />
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="../assets/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form id="reset-password" class="sign-in-form">
-                    <h2 class="title">Reset Password</h2>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" />
-                        <div id="password-error" class="error-message"></div>
-                    </div>
-                    <button id="reset-btn" type="submit" class="btn solid">Reset</button>
-                    <button id="reset-load-btn" type="submit" class="btn solid" disabled style="display: none;">
-                        Memuat
-                        <div class="loader"></div>
-                    </button>
-                </form>
-            </div>
-        </div>
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <img src="../assets/images/forgot.svg" class="image" alt="" />
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Ganti sandi</h2>
+                        <form id="reset-password" class="register-form">
+                            <div class="form-group">
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="password" />
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" name="signup" id="reset-btn" class="form-submit">Ganti</button>
+                                <button id="reset-load-btn" type="submit" class="form-submit" disabled
+                                    style="display: none;">
+                                    Memuat
+                                    <div class="loader"></div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="../assets/images/register.svg" alt="sing up image"></figure>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
     </div>
 
-    <script src="../assets/js/app.js"></script>
-    <script src="https://www.recaptcha.net/recaptcha/api.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {

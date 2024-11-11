@@ -59,7 +59,7 @@
                         <!-- end card -->
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Sudah punya akun? <a href="/auth" class="fw-semibold  text-decoration-none"
+                            <p class="mb-0">Sudah punya akun? <a href="/login" class="fw-semibold  text-decoration-none"
                                     style="color: #e6b872;">Login</a></p>
                         </div>
 

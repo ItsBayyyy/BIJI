@@ -28,14 +28,13 @@ class User extends Authenticatable implements JWTSubject
         'role_id'
     ];
 
-    // Implementasikan metode yang diperlukan oleh JWTSubject
     public function getJWTIdentifier()
     {
-        return $this->getKey(); // Mengembalikan ID pengguna
+        return $this->getKey(); 
     }
 
     public function getJWTCustomClaims()
     {
-        return []; // Anda bisa menambahkan klaim kustom di sini jika diperlukan
+        return [];
     }
 }

@@ -12,7 +12,8 @@ Route::get('/', function () {
 
 //auth
 Route::group(['middleware' => 'common.helper'], function() {
-    Route::get('/auth', [AuthController::class, 'showAuth']);
+    Route::get('/register', [AuthController::class, 'showRegister']);
+    Route::get('/login', [AuthController::class, 'showLogin']);
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/activate', [AuthController::class, 'showActivate']);
@@ -27,9 +28,12 @@ Route::group(['middleware' => 'common.helper'], function() {
 
 Route::post('/logout', function () {
     Auth::logout(); 
+    Session::flush();
     return response()->json(['message' => 'Successfully logged out']);
 });
 
+//chatbot
+Route::get('/chat', [UserController::class, 'showCustomer']);
 Route::post('/chat', [ChatbotController::class, 'chat']);
 Route::post('/learn', [ChatbotController::class, 'learnNewInfo']);
 Route::get('/recall/{topic}', [ChatbotController::class, 'recallInfo']);

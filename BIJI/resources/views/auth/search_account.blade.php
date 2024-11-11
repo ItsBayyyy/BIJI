@@ -2,46 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>BIJI | Auth</title>
+    <title>BIJI | Lupa Kata Sandi</title>
     <link
       rel="shortcut icon"
       href="../assets/images/icon.png"
       type="image/x-icon"
     />
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/auth.css" />
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="../assets/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="../assets/css/login.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form id="search-account" class="sign-in-form">
-                    <h2 class="title">Search Account</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username or Email" name="email" />
-                        <div id="email-error" class="error-message"></div>
+
+    <div class="main">
+
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="../assets/images/search.svg" alt="sing up image"></figure>
+                        <a href="/register" class="signup-image-link">Kembali</a>
                     </div>
-                    <button id="change-btn" type="submit" class="btn solid">Search</button>
-                    <button id="change-load-btn" type="submit" class="btn solid" disabled style="display: none;">
-                        Memuat
-                        <div class="loader"></div>
-                    </button>
-                </form>
-            </div>
-        </div>
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <img src="../assets/images/search.svg" class="image" alt="" />
+                    <div class="signin-form">
+                        <h2 class="form-title">Cari Akun</h2>
+                        <form id="search-account" class="register-form">
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email material-icons-name"></i></label>
+                                <input type="text" name="email" id="email" placeholder="Email" />
+                            </div>
+
+                            <div class="form-group form-button">
+                                <button type="submit" name="signin" id="change-btn" class="form-submit">Cari</button>
+                                <button id="change-load-btn" type="submit" class="form-submit" disabled
+                                style="display: none;">
+                                    Memuat
+                                    <div class="loader"></div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
     </div>
-
-    <script src="../assets/js/app.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
